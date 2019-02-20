@@ -1,23 +1,23 @@
+require('dotenv').config();
 const express = require('express');
+const cors =  require('cors');
+const bodyParser =  require('body-parser');
+
+const handle = require('./handlers');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT;
 
-app.get('/', (req, res) => res.json({
-    hello: "world"
-}));
+app.use(cors());
+app.use(bodyParser.json());
 
-app.use((req, res, next) => {
-    const err = new Error('Not Found');
-    err.status = 404;
-
-    next(err);
-});
-
-app.use((err, req, res, next) => {
-    res.status(err.status || 500).json({
-        err: err.message || 'Something went wrong'
+app.get('/', (req, res) => {
+    res.json({
+        hello: "world"
     });
 });
 
-app.listen(port, console.log(`Server running on port ${port}`));
+app.use(handle.notFound);
+app.use(handle.errors);
+
+app.listen(port, console.log(`Server running on port ${port}`)); 
