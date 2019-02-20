@@ -5,11 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-		"seed": "node seed.js"
+    "seed": "node seed.js"
   },
   "author": "Santiago",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",

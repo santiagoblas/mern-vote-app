@@ -5,6 +5,7 @@ const bodyParser =  require('body-parser');
 
 const db = require('./models');
 const handle = require('./handlers');
+const routes = require('./routes')
 
 const app = express();
 const port = process.env.PORT;
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
         hello: "world"
     });
 });
+app.use('/api/auth', routes.auth);
 
 app.use(handle.notFound);
 app.use(handle.errors);
