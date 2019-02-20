@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "nodemon index.js",
+		"seed": "node seed.js"
+  },
   "author": "Santiago",
   "license": "ISC",
   "dependencies": {
