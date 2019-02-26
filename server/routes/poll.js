@@ -8,4 +8,12 @@ router
     .get(handle.showPolls)
     .post(auth, handle.createPoll);
 
+router.get('/user', auth, handle.userPolls);
+
+router
+    .route('/:id')
+    .get(handle.getPoll)
+    .post(auth, handle.vote)
+    .delete(auth, handle.deletePoll);
+
 module.exports = router;
