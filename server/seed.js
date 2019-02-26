@@ -8,8 +8,8 @@ mongoose.connect(process.env.DATABASE);
 const db = require('./models');
 
 const users = [
-  { username: 'username', password: 'password' },
-  { username: 'kelvin', password: 'password' },
+  { username: 'rocio', password: 'password' },
+  { username: 'santiago', password: 'password' },
 ];
 
 const polls = [
@@ -42,7 +42,7 @@ const seed = async () => {
       polls.map(async poll => {
         poll.options = poll.options.map(option => ({ option, votes: 0 }));
         const data = await db.Poll.create(poll);
-        const user = await db.User.findOne({ username: 'username' });
+        const user = await db.User.findOne({ username: 'santiago' });
         data.user = user;
         user.polls.push(data._id);
         await user.save();
