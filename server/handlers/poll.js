@@ -28,7 +28,6 @@ exports.userPolls = async(req, res, next) => {
 
 exports.createPoll = async (req, res, next) => {
     try {
-        console.log(req.decoded);
         const {id} = req.decoded;
         const user = await db.User.findById(id);
 
