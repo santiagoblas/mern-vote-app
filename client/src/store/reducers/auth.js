@@ -12,6 +12,7 @@ export default (state = DEFAULT_STATE, action) => {
                 isAuthenticated: !!Object.keys(action.user).length,
                 user: action.user
             };
+            
         default:
             return state;
     }
