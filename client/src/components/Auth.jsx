@@ -37,7 +37,7 @@ class Auth extends Component {
                 <input type="text" name="username" id="username" value={username} onChange={this.handleChange}/>
 
                 <label htmlFor="password">password</label>
-                <input type="password" name="password" id="password" value={password} onChange={this.handleChange}/>
+                <input type="password" name="password" autoComplete="false" id="password" value={password} onChange={this.handleChange}/>
 
                 <button type="submit">Login</button>
             </form>
