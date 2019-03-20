@@ -6,6 +6,7 @@ import { logout } from '../store/actions';
  
 const NavBar = ({ auth, logout }) => (<div>
     <ul>
+        <li><Link to='/'>Home</Link></li>
         <li><Link to='/register'>Register</Link></li>
         <li><Link to='/login'>Login</Link></li>
         <li><Link to='/test'>Test</Link></li>
