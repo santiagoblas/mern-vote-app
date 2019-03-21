@@ -3,11 +3,11 @@ import React from 'react';
 import ErrorMessage from '../components/ErrorMessage';
 import Polls from '../components/Polls';
 
-const HomePage = () => {
+const HomePage = props => {
     return (
         <div>
             <ErrorMessage />
-            <Polls />
+            <Polls {...props} />
         </div>
     )
 }
