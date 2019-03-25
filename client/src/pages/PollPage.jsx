@@ -3,9 +3,7 @@ import React from 'react';
 import ErrorMessage from '../components/ErrorMessage';
 import Poll from '../components/Poll';
 
-const PollPage = ({ match, getPoll, poll }) => {
-    const host = window.location.href;
-
+const PollPage = ({ match, getPoll }) => {
     getPoll(match.params.id);
 
     return (

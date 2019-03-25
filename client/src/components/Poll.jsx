@@ -12,7 +12,7 @@ const Poll = ({ poll, vote }) => {
         </button>
     ))
 
-    const data = {
+    const data = poll.options && {
         labels: poll.options.map(option => option.option),
         datasets: [
             {
@@ -34,7 +34,7 @@ const Poll = ({ poll, vote }) => {
     return (<div>
         <h3>{poll.question}</h3>
         <div>{answers}</div>
-        <Pie data={data} options={options} />
+        {poll.options && <Pie data={data} options={options} />}
     </div>)
 };
 

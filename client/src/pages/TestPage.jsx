@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Poll from '../components/Poll';
+import CreatePoll from '../components/CreatePoll';
 import ErrorMessage from '../components/ErrorMessage';
 
 const TestPage = () => {
     return (
         <div>
             <ErrorMessage />
-            <Poll />
+            <CreatePoll />
         </div>
     )
 }
