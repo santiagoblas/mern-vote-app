@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {authUser, logout} from '../store/actions';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { authUser, logout } from '../store/actions';
 
 class Auth extends Component {
     constructor(props) {
@@ -17,7 +17,7 @@ class Auth extends Component {
     handleChange(e) {
         const { name, value } = e.target;
 
-        this.setState( { [name]: value } );
+        this.setState({ [name]: value });
     }
 
     handleSubmit(e) {
@@ -31,13 +31,13 @@ class Auth extends Component {
     render() {
         const { username, password } = this.state
 
-        return <div>
+        return <div className="container">
             <form action="" onSubmit={this.handleSubmit}>
                 <label htmlFor="username">username</label>
-                <input type="text" name="username" id="username" value={username} onChange={this.handleChange}/>
+                <input type="text" name="username" id="username" value={username} onChange={this.handleChange} />
 
                 <label htmlFor="password">password</label>
-                <input type="password" name="password" autoComplete="false" id="password" value={password} onChange={this.handleChange}/>
+                <input type="password" name="password" autoComplete="false" id="password" value={password} onChange={this.handleChange} />
 
                 <button type="submit">Login</button>
             </form>
@@ -46,6 +46,6 @@ class Auth extends Component {
 }
 
 export default connect(
-    () => ({}), 
+    () => ({}),
     { authUser, logout }
-    )(Auth);
+)(Auth);
