@@ -1,24 +1,53 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import M from "materialize-css";
 
 import { logout } from '../store/actions';
 
-const NavBar = ({ auth, logout }) => (<div>
-    <nav>
-        <div className="nav-wrapper container">
-            <a href="#" className="brand-logo left"> MERN Vote App</a>
+class NavBar extends Component {
+    constructor(props) {
+        super(props);
+    }
 
-            <ul className="right">
-                <li><Link to='/'>Home</Link></li>
-                {!auth.isAuthenticated && (<li><Link to='/register'>Register</Link></li>)}
-                {!auth.isAuthenticated && (<li><Link to='/login'>Login</Link></li>)}
-                <li><Link to='/test'>Test</Link></li>
-                {auth.isAuthenticated && (<li><a><i className="material-icons left">person</i> {auth.user.username}</a></li>)}
-                {auth.isAuthenticated && (<li><a href="#!" onClick={logout}>Logout</a></li>)}
-            </ul>
-        </div>
-    </nav>
-</div>);
+    componentDidMount() {
+        const dropdownUsr = document.querySelectorAll('#dropdown-usr-trigger');
+        const options = {
+            coverTrigger: false
+        };
+
+        M.Dropdown.init(dropdownUsr, options);
+    }
+
+    componentDidUpdate() {
+        const dropdownUsr = document.querySelectorAll('#dropdown-usr-trigger');
+        const options = {
+            coverTrigger: false
+        };
+
+        M.Dropdown.init(dropdownUsr, options);
+    }
+
+    render() {
+        return (<div>
+            {this.props.auth.isAuthenticated && (<div><ul id="dropdown-usr" className="dropdown-content" style={{ marginTop: '20px' }}>
+                <li><a onClick={this.props.logout}>Logout</a></li>
+            </ul></div>)}
+            <nav>
+                <div className="nav-wrapper container">
+                    <a href="#" className="brand-logo left"> MERN Vote App</a>
+
+                    <ul className="right">
+                        <li><Link to='/'>Home</Link></li>
+                        {!this.props.auth.isAuthenticated && (<li><Link to='/register'>Register</Link></li>)}
+                        {!this.props.auth.isAuthenticated && (<li><Link to='/login'>Login</Link></li>)}
+                        <li><Link to='/test'>Test</Link></li>
+                        {this.props.auth.isAuthenticated && (<li><a id="dropdown-usr-trigger" className="dropdown-trigger" href="#" data-target="dropdown-usr"><i className="material-icons left">person</i> {this.props.auth.user.username}</a></li>)}
+                    </ul>
+                </div>
+            </nav>
+        </div >);
+    }
+}
 
 export default connect(store => ({ auth: store.auth }), { logout })(NavBar); 
