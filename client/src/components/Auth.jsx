@@ -33,13 +33,32 @@ class Auth extends Component {
 
         return <div className="container">
             <form action="" onSubmit={this.handleSubmit}>
-                <label htmlFor="username">username</label>
-                <input type="text" name="username" id="username" value={username} onChange={this.handleChange} />
+                <div className="row mt40">
+                    <div className="col s12 m6 offset-m3 l4 offset-l4">
+                        <div className="card">
+                            <div className="card-content">
+                                <span class="card-title pink-text">Iniciar Sesión</span>
+                                <div className="input-field">
+                                    <i class="material-icons prefix">person</i>
+                                    <input type="text" name="username" id="username" value={username} onChange={this.handleChange} />
+                                    <label htmlFor="username">Usuario</label>
+                                </div>
 
-                <label htmlFor="password">password</label>
-                <input type="password" name="password" autoComplete="false" id="password" value={password} onChange={this.handleChange} />
+                                <div className="input-field">
+                                    <i class="material-icons prefix">lock</i>
+                                    <input type="password" name="password" autoComplete="false" id="password" value={password} onChange={this.handleChange} />
+                                    <label htmlFor="password">Contraseña</label>
+                                </div>
 
-                <button type="submit">Login</button>
+
+                            </div>
+                            <div class="card-action center-align">
+                                <button type="submit" className="btn pink">Entrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </form>
         </div>
     }
