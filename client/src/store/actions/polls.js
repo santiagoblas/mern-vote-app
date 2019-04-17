@@ -15,9 +15,9 @@ export const setCurrentPoll = poll => ({
 export const getPolls = () => {
     return async dispatch => {
         try {
+            dispatch(removeError());
             const polls = await api.call('get', 'polls');
             dispatch(setPolls(polls));
-            dispatch(removeError());
         } catch (err) {
             const error = err.response.data;
             dispatch(addError(error.message));
@@ -28,9 +28,9 @@ export const getPolls = () => {
 export const getUserPolls = () => {
     return async dispatch => {
         try {
+            dispatch(removeError());
             const polls = await api.call('get', 'polls/user');
             dispatch(setPolls(polls));
-            dispatch(removeError());
         } catch (err) {
             const error = err.response.data;
             dispatch(addError(error.message));
@@ -41,9 +41,9 @@ export const getUserPolls = () => {
 export const createPoll = data => {
     return async dispatch => {
         try {
+            dispatch(removeError());
             const poll = await api.call('post', 'polls', data);
             dispatch(setCurrentPoll(poll));
-            dispatch(removeError());
         } catch (err) {
             const error = err.response.data;
             dispatch(addError(error.message));
@@ -54,9 +54,9 @@ export const createPoll = data => {
 export const getCurrentPoll = id => {
     return async dispatch => {
         try {
+            dispatch(removeError());
             const poll = await api.call('get', `polls/${id}`);
             dispatch(setCurrentPoll(poll));
-            dispatch(removeError());
         } catch (err) {
             const error = err.response.data;
             dispatch(addError(error.message));
@@ -67,9 +67,9 @@ export const getCurrentPoll = id => {
 export const vote = (id, data) => {
     return async dispatch => {
         try {
+            dispatch(removeError());
             const poll = await api.call('post', `polls/${id}`, data);
             dispatch(setCurrentPoll(poll));
-            dispatch(removeError());
         } catch (err) {
             const error = err.response.data;
             dispatch(addError(error.message));

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authUser, logout } from '../store/actions';
+import { removeError } from '../store/actions/error';
 
 class Auth extends Component {
     constructor(props) {
@@ -12,6 +13,10 @@ class Auth extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.removeError();
     }
 
     handleChange(e) {
@@ -30,6 +35,10 @@ class Auth extends Component {
 
     render() {
         const { username, password } = this.state
+        const { authType } = this.props;
+
+        const title = (authType === 'register') ? 'Registro' : 'Iniciar Sesión';
+
 
         return <div className="container">
             <form action="" onSubmit={this.handleSubmit}>
@@ -37,7 +46,7 @@ class Auth extends Component {
                     <div className="col s12 m6 offset-m3 l4 offset-l4">
                         <div className="card">
                             <div className="card-content">
-                                <span class="card-title pink-text">Iniciar Sesión</span>
+                                <span class="card-title pink-text">{title}</span>
                                 <div className="input-field">
                                     <i class="material-icons prefix">person</i>
                                     <input type="text" name="username" id="username" value={username} onChange={this.handleChange} />
@@ -66,5 +75,5 @@ class Auth extends Component {
 
 export default connect(
     () => ({}),
-    { authUser, logout }
+    { authUser, logout, removeError }
 )(Auth);

@@ -4,7 +4,7 @@ module.exports = {
 }
 
 module.exports.notFound = (req, res, next) => {
-    const err = new Error('Not Found');
+    const err = new Error('No encontrado');
     err.status = 404;
 
     next(err);
@@ -12,6 +12,6 @@ module.exports.notFound = (req, res, next) => {
 
 module.exports.errors = (err, req, res, next) => {
     res.status(err.status || 500).json({
-        message: err.message || 'Something went wrong'
+        message: err.message || 'Algo salió mal'
     });
 };
